@@ -46,9 +46,7 @@ public class ProductRepository {
   public void removeById(int id) {
     Product[] removingItem = findById(id);
     if (removingItem == null) {
-      NotFoundException exception = new NotFoundException();
-      exception.throwException();
-      System.out.println("Element with id: " + id + " not found.");
+      throw new NotFoundException("Element with id " + id + " not found");
     }
     List<Product> list = new ArrayList<>(Arrays.asList(items));
     list.remove(removingItem[0]);
